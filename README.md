@@ -1,5 +1,3 @@
-# API-Wallet
-
 <p align="center">
   <img
     src="https://i.imgur.com/R1McUCV.jpg"
@@ -13,6 +11,7 @@
 # Getting Started
 
 ```
+npm install 
 npm start
 
 ```

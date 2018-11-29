@@ -1,46 +1,8 @@
-
 'use strict';
 
-const express = require("express");
-const http = require('http');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const app = require('./src/app');
+const port = 3000;
 
-const routes = require('./utils/routes'); 
-
-
-class Server{
-
-    constructor(){
-        this.port =  process.env.PORT || 8080;
-        this.host = `http://localhost`;
-        
-        this.app = express();
-        this.http = http.Server(this.app);
-    }
-
-    appConfig(){        
-        this.app.use(bodyParser.json({limit: '20mb'}));
-        this.app.use(cors());
-    }
-
-    /* Including app Routes starts*/
-    includeRoutes(){
-        new routes(this.app).routesConfig();
-    }
-    /* Including app Routes ends*/  
-
-    appExecute(){
-        this.appConfig();
-        this.includeRoutes();
-
-        this.http.listen(this.port, this.port, () => {
-            console.log(`Listening on 8080`);
-        });
-
-    }
-
-}
-
-const app = new Server();
-app.appExecute();
+app.listen(port, () => {
+  console.log(`app running on port ${port}`);
+});
